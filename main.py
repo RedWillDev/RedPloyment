@@ -37,7 +37,7 @@ port_random=set_ssh_port()
 path_to_jail_local="/etc/fail2ban/jail.local"
 
 #VAR GENERALE
-done='false'
+done='true'
 
 #CONFIGURE SSH
 
@@ -45,7 +45,7 @@ done='false'
 def ssh_conf():
     global done
     print(printssh1)
-    animate()
+    #animate()
     try:
         #os.system("sed -i 's/#   Port 22/    Port {}/'".format(port_random) + "{}".format(path_to_ssh_conf))
         os.system("sudo sed -i 's/#Port 22/Port {}/'".format(port_random) + "{}".format(path_to_sshd_conf))
