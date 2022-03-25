@@ -82,3 +82,9 @@ def Fail2Ban():
               "Fail2Ban correctly restarted")
        # done="false"
 
+
+
+
+ssh_conf()
+time.sleep(3)
+Fail2Ban()
