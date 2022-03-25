@@ -66,10 +66,10 @@ def Fail2Ban():
     try:
         os.system("sudo apt-get install fail2ban -y")
         os.system("sudo cp /etc/fail2ban/jail.{conf,local}")
-        os.system("sudo sed -i 's/bantime  = 10m/bantime  = -1/ {}'".format(path_to_jail_local))
-        os.system("sudo sed -i 's/findtime  = 10m/findtime  = 15m/ {}'".format(path_to_jail_local))
-        os.system("sudo sed -i 's/maxretry = 5/maxretry = 3/ {}'".format(path_to_jail_local))
-        os.system("sudo sed -i 's/maxretry = 5/maxretry = 3/ {}'".format(path_to_jail_local))
+        os.system("sudo sed -i 's/bantime  = 10m/bantime  = -1/' {}".format(path_to_jail_local))
+        os.system("sudo sed -i 's/findtime  = 10m/findtime  = 15m/' {}".format(path_to_jail_local))
+        os.system("sudo sed -i 's/maxretry = 5/maxretry = 3/' {}".format(path_to_jail_local))
+        os.system("sudo sed -i 's/maxretry = 5/maxretry = 3/' {}".format(path_to_jail_local))
     except:
         print("an error as occured verify you file path")
 
