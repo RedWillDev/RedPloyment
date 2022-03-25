@@ -48,8 +48,8 @@ def ssh_conf():
     #animate()
     try:
         #os.system("sed -i 's/#   Port 22/    Port {}/'".format(port_random) + "{}".format(path_to_ssh_conf))
-        os.system("sudo sed -i 's/#Port 22/Port {}/'".format(port_random) + "{}".format(path_to_sshd_conf))
-        os.system("sudo sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin no/'".format(port_random) + "{}".format(path_to_sshd_conf))
+        os.system("sudo sed -i 's/#Port 22/Port {}/' {}".format(port_random, path_to_sshd_conf))
+        os.system("sudo sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin no/' {}".format(path_to_sshd_conf))
     except:
         print("an error as occured verify you file path")
     finally:
@@ -57,7 +57,7 @@ def ssh_conf():
         #done="true"
         print(Fore.RED + "SSH" + Fore.RESET + " port set to : " + Fore.RED + str(port_random) + "\n" +
               "Root" + Fore.RESET + " remote login : " + Fore.RED + "disabled" + "\n" +
-               "SSH, SSHD correctly restarted")
+               "SSH, SSHD correctly restarted" + Fore.RESET)
         #done="false"
 
 def Fail2Ban():
@@ -66,15 +66,15 @@ def Fail2Ban():
     try:
         os.system("sudo apt-get install fail2ban -y")
         os.system("sudo cp /etc/fail2ban/jail.{conf,local}")
-        os.system("sudo sed -i 's/bantime  = 10m/bantime  = -1/ {}".format(path_to_jail_local))
-        os.system("sudo sed -i 's/findtime  = 10m/findtime  = 15m/ {}".format(path_to_jail_local))
-        os.system("sudo sed -i 's/maxretry = 5/maxretry = 3/ {}".format(path_to_jail_local))
-        os.system("sudo sed -i 's/maxretry = 5/maxretry = 3/ {}".format(path_to_jail_local))
+        os.system("sudo sed -i 's/bantime  = 10m/bantime  = -1/ {}'".format(path_to_jail_local))
+        os.system("sudo sed -i 's/findtime  = 10m/findtime  = 15m/ {}'".format(path_to_jail_local))
+        os.system("sudo sed -i 's/maxretry = 5/maxretry = 3/ {}'".format(path_to_jail_local))
+        os.system("sudo sed -i 's/maxretry = 5/maxretry = 3/ {}'".format(path_to_jail_local))
     except:
         print("an error as occured verify you file path")
 
     finally:
-        os.system("sudo systemctl enable fail2ban sudo systemctl restart fail2ban")
+        os.system("sudo systemctl enable fail2ban && sudo systemctl restart fail2ban")
         #done="true"
         print(Fore.RED + "Bantime" + Fore.RESET + " set to : " + Fore.RED + "-1" + "\n" +
               "Findtime" + Fore.RESET + " set to : " + Fore.RED + "15m" + "\n" +
