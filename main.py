@@ -42,12 +42,12 @@ def ssh_conf():
     print(printssh1)
     animate()
     try:
-        os.system("sed -i 's/#   Port 22/    Port {}/'".format(port_random) + "{}".format(path_to_ssh_conf))
+        #os.system("sed -i 's/#   Port 22/    Port {}/'".format(port_random) + "{}".format(path_to_ssh_conf))
         os.system("sed -i 's/#Port 22/Port {}/'".format(port_random) + "{}".format(path_to_sshd_conf))
+        os.system("sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin no/'".format(port_random) + "{}".format(path_to_sshd_conf))
 
     except:
         print("an error as occured verify you file path")
-
     finally:
         done="true"
         print(Fore.RED + "SSH" + Fore.RESET + " port set to : " + Fore.RED + str(port_random) + "\n" +
